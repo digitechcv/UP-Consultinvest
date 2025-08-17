@@ -58,3 +58,43 @@ export const services = [
         ]
     },
 ]
+
+export const CompanyValues = [
+    {
+        title: "Excelência",
+        description: "Entregar sempre soluções de alto nível, superando expectativas."
+    },
+    {
+        title: "Inovação",
+        description: "Explorar novas ideias, tecnologias e abordagens criativas para gerar impacto."
+    },
+    {
+        title: "Compromisso",
+        description: "Trabalhar com dedicação e responsabilidade em cada projeto."
+    },
+    {
+        title: "Colaboração",
+        description: "Construir relações sólidas e parcerias estratégicas baseadas em confiança."
+    },
+    {
+        title: "Sustentabilidade",
+        description: "Promover crescimento responsável e duradouro para negócios e comunidade."
+    },
+    {
+        title: "Foco em Resultados",
+        description: "Medir o sucesso pelo impacto real que geramos para os nossos clientes."
+    },
+]
+
+export const OrganizationalIdentity = [
+    {
+        title: "Missão",
+        icon: 0,
+        description: "Impulsionar o crescimento sustentável de empresas e empreendedores, oferecendo soluções estratégicas em consultoria, marketing e inovação que combinam visão de futuro, criatividade e foco em resultados. Trabalhamos para transformar ideias em negócios sólidos, fortalecer marcas e criar valor duradouro para os nossos clientes, parceiros e comunidade.",
+    },
+    {
+        title: "Visão",
+        icon: 1,
+        description: "Ser reconhecida como a parceira estratégica de referência em consultoria, marketing e inovação em Cabo Verde e nos mercados internacionais, destacando-nos pela capacidade de gerar resultados, criar valor e antecipar tendências que impulsionam o sucesso dos nossos clientes.",
+    }
+]

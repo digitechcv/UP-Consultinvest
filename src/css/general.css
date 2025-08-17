@@ -7,6 +7,14 @@
     --secondary-color-80: rgba(0, 0, 0, 0.8);
     --header-color: rgb(255, 255, 255);
     --text-color: rgb(101, 101, 101);
+    --big-title: 46pt;
+    --normal-title: 28pt;
+    --small-title: 20pt;
+    --sub-title: 18pt;
+    --big-text: 14pt;
+    --text: 12pt;
+    --small-text: 10pt;
+    --light-gray: #eee;
 }
 
 * {

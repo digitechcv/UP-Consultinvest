@@ -41,14 +41,14 @@
 }
 
 .hero-section .container .info h1 {
-    font-size: 46pt;
+    font-size: var(--big-title);
     font-weight: 700;
     line-height: 1.3em;
     width: 850px;
 }
 
 .hero-section .container .info p {
-    font-size: 18pt;
+    font-size: var(--text);
 }
 
 .hero-section .container .hero-section-options {
@@ -126,7 +126,7 @@
 
 /* Services */
 
-.our-services {
+.section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -135,13 +135,13 @@
 }
 
 .section-title {
-    font-size: 28pt;
+    font-size: var(--normal-title);
     font-weight: 700;
     color: var(--secondary-color);
 }
 
 .section-caption {
-    font-size: 14pt;
+    font-size: var(--text);
     margin: 10px 0;
     color: var(--text-color);
     text-align: center;
@@ -153,4 +153,201 @@
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 20px;
     row-gap: 20px;
+}
+
+.about-us-title-container {
+    width: 100%;
+}
+
+.about-us-title-container span {
+    background: #eee;
+    padding: 7px 15px;
+    border-radius: 50px;
+    color: var(--secondary-color);
+    font-size: var(--small-text);
+    font-weight: 600;
+}
+
+.info-container {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.info-container .about-us-column {
+    margin-top: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-container .about-us-column h1 {
+    font-weight: 600;
+    font-size: var(--small-title);
+}
+
+.info-container .about-us-column p {
+    font-size: var(--text);
+    color: var(--text-color);
+}
+
+.info-container .about-us-column .company-values {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.info-container .company-values .company-values-card {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+    color: var(--secondary-color);
+}
+
+
+.info-container .company-values .company-values-card .icon-container{
+    width: 18px;
+    height: 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: var(--secondary-color);
+}
+
+.info-container .company-values .company-values-card .icon-container .icon{
+    width: 100%;
+    height: 100%;
+    color: var(--primary-color);
+}
+
+.info-container .company-values .company-values-card p {
+    font-size: var(--small-text);
+    font-weight: 500;
+}
+
+.contact-container {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.contact-container .company-info {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-container .company-info .social-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.icon_container{
+    width: 18px;
+    height: 18px;
+    border-radius: 20px;
+    background: var(--secondary-color);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon_container .icon {
+    width: 100%;
+    height: 100%;
+    color: var(--primary-color);
+}
+
+.contact-container .contact-form {
+    width: 70%;
+    background: white;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.contact-container .contact-form h1 {
+    font-size: var(--sub-title);
+    color: var(--secondary-color);
+}
+.contact-container .contact-form p {
+    font-size: var(--text);
+    color: var(--text-color);
+}
+
+.contact-container .contact-form form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    height: 100%;
+}
+
+.contact-container .contact-form form .input_columns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-container .contact-form form .input_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.contact-container .contact-form form .input_container label {
+    font-size: var(--text);
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.contact-container .contact-form form .input_container input {
+    padding: 10px 15px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--light-gray);
+    transition: 0.3s ease;
+}
+
+.contact-container .contact-form form .input_container textarea:focus,
+.contact-container .contact-form form .input_container input:focus {
+    border: 2px solid var(--primary-color);
+    transition: .3s ease;
+}
+
+.contact-container .contact-form form .input_container textarea {
+    resize: none;
+    height: 150px;
+    padding: 10px 15px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--light-gray);
+    transition: 0.3s ease;
+}
+
+.form-button {
+    padding: 10px 15px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: var(--text);
 }

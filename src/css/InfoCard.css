@@ -1,0 +1,36 @@
+.InfoCard {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 20px;
+    align-items: start;
+}
+
+.InfoCard .icon_container{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: var(--secondary-color);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.InfoCard .icon_container .icon {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-color);
+}
+
+.InfoCard .info_container {
+    width: 100%;
+}
+
+.InfoCard .info_container h2 {
+    font-size: var(--big-text);
+    color: var(--secondary-color);
+}

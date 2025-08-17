@@ -7,7 +7,7 @@
     padding: 10px 150px;
     background: var(--primary-color);
     color: var(--secondary-color);
-    font-size: 10pt;
+    font-size: var(--small-text);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -46,7 +46,7 @@
 }
 
 .header .logo {
-    font-size: 18pt;
+    font-size: var(--sub-title);
     font-weight: 700;
     text-decoration: none;
     color: var(--primary-color);

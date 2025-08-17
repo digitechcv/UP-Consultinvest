@@ -30,7 +30,7 @@
 }
 
 .ServiceCard p {
-    font-size: 14pt;
+    font-size: var(--text);
     font-weight: 700;
     color: var(--secondary-color);
     transition: .3s ease;
