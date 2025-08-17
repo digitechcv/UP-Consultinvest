@@ -1,0 +1,101 @@
+.header-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-header {
+    padding: 10px 150px;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 10pt;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact-header .contact-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-header .contact-info p {
+    display: flex;
+    gap: 10px;
+    font-weight: 700;
+    align-items: center;
+}
+
+.contact-header .socials {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.contact-header .socials .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.header {
+    background-color: var(--header-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 150px;
+}
+
+.header .logo {
+    font-size: 18pt;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.header .menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.header .menu ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu-option {
+    list-style: none;
+}
+
+.menu-option-link {
+    color: black;
+    font-weight: 500;
+    transition: .3s ease;
+}
+
+.menu-option-link:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--primary-color);
+    transition: .3s ease;
+}
+
+.menu-button {
+    background: none;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+    padding: 10px 12px;
+    border-radius: 5px;
+    outline: none;
+    transition: .3s ease;
+}
+
+.menu-button:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: .3s ease;
+}

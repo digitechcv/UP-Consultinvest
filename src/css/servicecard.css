@@ -1,0 +1,101 @@
+.ServiceCard {
+    width: 350px;
+    height: 400px;
+    flex-shrink: 1;
+    padding: 25px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: .3s ease;
+}
+
+.ServiceCard .service-icon {
+    width: 30px;
+    height: 30px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background: var(--secondary-color);
+}
+
+.ServiceCard .service-icon .icon {
+    width: 100%;
+    height: 100%;
+    color: var(--primary-color);
+}
+
+.ServiceCard p {
+    font-size: 14pt;
+    font-weight: 700;
+    color: var(--secondary-color);
+    transition: .3s ease;
+}
+
+.ServiceCard span {
+    color: var(--text-color);
+}
+
+.ServiceCard ul {
+    padding: 0 15px;
+}
+
+.ServiceCard ul li {
+    color: var(--text-color);
+    margin: 5px 0;
+}
+
+.ServiceCard .service-button{
+    width: 100%;
+    margin-top: 10px;
+    height: 100%;
+    display: flex;
+    align-items: end;
+}
+
+.ServiceCard .service-button button {
+    outline-style: none;
+    padding: 10px 15px;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: none;
+    border-radius: 5px;
+    width: 100%;
+    justify-content: center;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.ServiceCard .service-button button .icon {
+    transition: .3s ease;
+} 
+
+.ServiceCard .service-button button:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.ServiceCard:hover .service-button button .icon,
+.ServiceCard .service-button button:hover .icon {
+    transform: translateX(10px);
+    transition: .3s ease;
+}
+
+.ServiceCard:hover {
+    transform: translateY(-10px);
+    transition: .3s ease;
+}
+
+.ServiceCard:hover p {
+    color: var(--primary-color);
+    transition: .3s ease;
+}
