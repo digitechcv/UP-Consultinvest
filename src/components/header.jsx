@@ -1,8 +1,27 @@
 import { FaEnvelope, FaFacebook, FaPhoneAlt } from "react-icons/fa";
 import "../css/header.css";
 import { AiFillInstagram } from "react-icons/ai";
+import { useEffect } from "react";
 
 const Header = () => {
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const header = document.getElementById("header");
+            if(window.scrollY > 250) {
+                header.classList.add("fixed-header");
+            }
+            else header.classList.remove("fixed-header");
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        // cleanup on unmount
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
         <section className="header-container">
             <div className="contact-header">
@@ -14,7 +33,7 @@ const Header = () => {
                     <AiFillInstagram className="icon"/>
                 </div>
             </div>
-            <div className="header">
+            <div id="header" className="header">
                 <a href="#" className="logo">Up Consultinvest</a>
                 <div className="menu">
                     <ul>
