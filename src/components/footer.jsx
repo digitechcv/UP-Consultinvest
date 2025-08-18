@@ -1,8 +1,16 @@
 import { MdEmail } from "react-icons/md";
 import "../css/footer.css"
 import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
+
+     const [year, setYear] = useState(new Date().getFullYear());
+
+    useEffect(() => {
+        const now = new Date();
+        setYear(now.getFullYear());
+    }, []);
 
     const scrollToId = (id) => {
         const element = document.getElementById(id);
@@ -45,7 +53,7 @@ const Footer = () => {
             </div>
             <div className="bottom_container">
                 <div className="copyright_container">
-                    <p>© 2025 Up Consultinvest. Todos os direitos reservados.</p>
+                    <p>© {year} Up Consultinvest. Todos os direitos reservados.</p>
                 </div>
                 <div className="terms_container">
                     <a href="#">Política de Privacidade</a>
