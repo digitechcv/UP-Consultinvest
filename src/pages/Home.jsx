@@ -23,7 +23,10 @@ const Home = () => {
                     <p>Consultoria, marketing, comunicação e finanças para empresas que querem crescer com solidez.</p>
                     <div className="hero-section-options">
                         <button className="start-button">Marcar Reunião <FaArrowRight className="icon"/> </button>
-                        <button className="service-button">Solicitar Proposta</button>
+                        <button className="service-button">
+                            <div className="animated_bg"></div>
+                            <p>Solicitar Proposta</p>
+                        </button>
                     </div>
                     <div className="hero-section-stats">
                         <div className="hero-section-stats-card">

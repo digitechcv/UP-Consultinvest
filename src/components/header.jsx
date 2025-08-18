@@ -50,7 +50,10 @@ const Header = () => {
                         <li className="menu-option" onClick={() => scrollToId("contact")}>Contato</li>
                     </ul>
 
-                    <button className="menu-button">Solicitar Consultoria</button>
+                    <button className="menu-button">
+                        <div className="animated_bg"></div>
+                        <p>Solicitar Consultoria</p>
+                    </button>
                 </div>
             </div>
         </section>
