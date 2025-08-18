@@ -51,7 +51,7 @@ const Home = () => {
                 {
                     services.map((service, index) => {
                         return (
-                            <ServiceCard service={service} index={index}/>
+                            <ServiceCard service={service} key={index} index={index}/>
                         );
                     })
                 }
@@ -158,7 +158,7 @@ const Home = () => {
                             <label htmlFor="message">Mensagem *</label>
                             <textarea id="message" placeholder="Conte-nos sobre o seu projeto e como podemos ajudar..."></textarea>
                         </div>
-                        <button className="form-button" type="submit">Enviar Mensagem <FiSend/></button>
+                        <button className="form-button" type="button">Enviar Mensagem <FiSend/></button>
                     </form>
                 </div>
             </div>
