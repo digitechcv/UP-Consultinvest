@@ -22,6 +22,13 @@ const Header = () => {
         };
     }, []);
 
+    const scrollToId = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
+
     return (
         <section className="header-container">
             <div className="contact-header">
@@ -37,10 +44,10 @@ const Header = () => {
                 <a href="#" className="logo">Up Consultinvest</a>
                 <div className="menu">
                     <ul>
-                        <li className="menu-option"><a href="#" className="menu-option-link">Home</a></li>
-                        <li className="menu-option"><a href="#" className="menu-option-link">Serviços</a></li>
-                        <li className="menu-option"><a href="#" className="menu-option-link">Sobre</a></li>
-                        <li className="menu-option"><a href="#" className="menu-option-link">Contato</a></li>
+                        <li className="menu-option" onClick={() => scrollToId("home")}>Home</li>
+                        <li className="menu-option" onClick={() => scrollToId("service")}>Serviços</li>
+                        <li className="menu-option" onClick={() => scrollToId("about-us")}>Sobre</li>
+                        <li className="menu-option" onClick={() => scrollToId("contact")}>Contato</li>
                     </ul>
 
                     <button className="menu-button">Solicitar Consultoria</button>

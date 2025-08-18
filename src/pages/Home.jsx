@@ -1,6 +1,6 @@
 import "../css/general.css";
 import "../css/home.css";
-import { Header, ServiceCard, InfoCard } from "../components";
+import { Header, ServiceCard, InfoCard, Footer } from "../components";
 import heroBg from "../images/hero-consulting-KkA-Ji33.jpg";
 import { FaArrowRight, FaFacebook } from "react-icons/fa";
 import { HiMiniArrowTrendingUp } from "react-icons/hi2";
@@ -15,7 +15,7 @@ const Home = () => {
     return(
         <>
           <Header/>
-          <section className="hero-section">
+          <section id="home" className="hero-section">
             <img className="heroBg" src={heroBg}/>
             <div className="container">
                 <div className="info">
@@ -43,7 +43,7 @@ const Home = () => {
             </div>
           </section>
 
-          <section className="our-services section">
+          <section id="service" className="our-services section">
             <h1 className="section-title">O que fazemos?</h1>
             <p className="section-caption">Apoiamos empresas e organizações nas áreas de comunicação, marketing digital, consultoria estratégica, eventos, finanças e aceleração de negócios.</p>
 
@@ -58,7 +58,7 @@ const Home = () => {
             </div>
           </section>
 
-          <section className="about-us section">
+          <section id="about-us" className="about-us section">
             <div className="about-us-title-container">
                 <span className="about-us-title">Sobre a Up Consultinvest</span>
             </div>
@@ -100,7 +100,7 @@ const Home = () => {
             </div>
           </section>
 
-          <section className="contact-us section">
+          <section id="contact" className="contact-us section">
             <h1 className="section-title">Queremos ouvir o que sua empresa precisa.</h1>
             <p className="section-caption">Estamos disponíveis para uma conversa estratégica.</p>
 
@@ -163,6 +163,8 @@ const Home = () => {
                 </div>
             </div>
           </section>
+
+          <Footer/>
         </>
     )
 }

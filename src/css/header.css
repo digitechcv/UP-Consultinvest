@@ -67,15 +67,13 @@
 
 .menu-option {
     list-style: none;
-}
-
-.menu-option-link {
     color: black;
     font-weight: 500;
     transition: .3s ease;
 }
 
-.menu-option-link:hover {
+.menu-option:hover {
+    cursor: pointer;
     color: var(--primary-color);
     cursor: pointer;
     padding-bottom: 5px;
