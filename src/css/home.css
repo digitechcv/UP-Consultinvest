@@ -177,6 +177,7 @@
 }
 
 .service-container {
+    width: 100%;
     margin: 30px 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -285,9 +286,34 @@
     border-radius: 20px;
     background: var(--secondary-color);
     padding: 10px;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.icon_container .selector {
+    position: absolute;
+    z-index: 1;
+    top: 13px;
+    width: 18px;
+    padding: 12px;
+    height: 18px;
+    border-radius: 20px;
+    left: var(50% - 1px);
+    transition: .3s ease;
+}
+
+.icon_container:hover {
+    cursor: pointer;
+}
+
+.icon_container:hover .selector {
+    position: absolute;
+    border-bottom: 3px solid var(--primary-color);
+    top: 2px;
+    transition: .3s ease;
 }
 
 .icon_container .icon {
@@ -343,7 +369,8 @@
     font-weight: 600;
 }
 
-.contact-container .contact-form form .input_container input {
+.contact-container .contact-form form .input_container input,
+.contact-container .contact-form form .input_container select {
     padding: 10px 15px;
     outline: none;
     border-radius: 5px;
@@ -351,6 +378,7 @@
     transition: 0.3s ease;
 }
 
+.contact-container .contact-form form .input_container select:focus,
 .contact-container .contact-form form .input_container textarea:focus,
 .contact-container .contact-form form .input_container input:focus {
     border: 2px solid var(--primary-color);

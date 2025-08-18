@@ -1,20 +1,98 @@
 import "../css/general.css";
 import "../css/home.css";
-import { Header, ServiceCard, InfoCard, Footer } from "../components";
+import { Header, ServiceCard, InfoCard, Footer, ServicePopup } from "../components";
 import heroBg from "../images/hero-consulting-KkA-Ji33.jpg";
 import { FaArrowRight, FaFacebook } from "react-icons/fa";
 import { HiMiniArrowTrendingUp } from "react-icons/hi2";
 import { services, CompanyValues, OrganizationalIdentity } from "../data/dummy";
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { IoLogoLinkedin, IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
 import { FiSend } from "react-icons/fi";
-
+import { useRef, useState } from "react";
 
 const Home = () => {
+
+    const [ service, setService ] = useState({});
+    const [ topic, setTopic ] = useState("");
+    const selectedMethodRef = useRef();
+    const [ dialogOpen, setDialogOpen ] = useState(false);
+    const [ loading, setLoading ] = useState(false);
+
+    const message = useRef();
+    const name = useRef();
+    const email = useRef();
+    const company = useRef();
+    const topicRef = useRef();
+
+    const onServiceDetail = (service) => {
+        setService(service);
+        setDialogOpen(true);
+    }
+
+    const scrollToId = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
+
+    const selectService = (selectedService) => {
+        setTopic(selectedService);
+        topicRef.current = selectedService;
+        scrollToId("contact");
+    }
+
+    const number = "";
+
+    const SendMessage = (e) => {
+        e.preventDefault();
+
+        try {
+            setLoading(true);
+
+            if(selectedMethodRef) {
+                if(selectedMethodRef.current === "whatsapp") {
+                    const link = generateWhatsAppLink(number, generateMessageTemplate());
+                }
+                else {
+
+                }
+            }
+
+        } catch {
+            
+        }
+        finally {
+            setLoading(false);
+        }
+
+    }
+
+    function generateMessageTemplate() {
+        templateMessage += "Assunto: " + topicRef.current;
+        let templateMessage = "\n \n " + message.current;
+
+        templateMessage += "\n \n Informações de Contato:";
+        templateMessage += "\n \n Nome: " + name.current;
+        templateMessage += "\n \n Email: " + email.current;
+        templateMessage += "\n \n Empresa: " + company.current;
+        return "";
+    }
+
+    function generateWhatsAppLink(phoneNumber, message) {
+        const baseURL = "https://wa.me/";
+        const encodedMessage = encodeURIComponent(message);
+        return `${baseURL}${phoneNumber}?text=${encodedMessage}`;
+    }
+
+    const ChangeMethod = (method) => {
+        selectedMethodRef.current = method;
+    }
 
     return(
         <>
           <Header/>
+          <ServicePopup isOpen={dialogOpen} onClose={() => setDialogOpen(false)} onSelect={selectService} service={service}/>
           <section id="home" className="hero-section">
             <img className="heroBg" src={heroBg}/>
             <div className="container">
@@ -28,20 +106,6 @@ const Home = () => {
                             <p>Solicitar Proposta</p>
                         </button>
                     </div>
-                    <div className="hero-section-stats">
-                        <div className="hero-section-stats-card">
-                            <p><HiMiniArrowTrendingUp/> 300+</p>
-                            <span>Empresas Aceleradas</span>
-                        </div>
-                        <div className="hero-section-stats-card">
-                            <p><HiMiniArrowTrendingUp/> 300+</p>
-                            <span>Capital Investido</span>
-                        </div>
-                        <div className="hero-section-stats-card">
-                            <p><HiMiniArrowTrendingUp/> 300+</p>
-                            <span>Taxa de Sucesso</span>
-                        </div>
-                    </div>
                 </div>
             </div>
           </section>
@@ -54,7 +118,7 @@ const Home = () => {
                 {
                     services.map((service, index) => {
                         return (
-                            <ServiceCard service={service} key={index} index={index}/>
+                            <ServiceCard service={service} key={index} index={index} onClick={onServiceDetail}/>
                         );
                     })
                 }
@@ -127,41 +191,66 @@ const Home = () => {
                     <div className="social-container">
                         <div className="icon_container">
                             <FaFacebook className="icon"/>
+                            <div className="selector"></div>
                         </div>
                         <div className="icon_container">
                             <RiInstagramFill className="icon"/>
+                            <div className="selector"></div>
+                        </div>
+                        <div className="icon_container">
+                            <IoLogoLinkedin className="icon"/>
+                            <div className="selector"></div>
                         </div>
                     </div>
                 </div>
                 <div className="contact-form">
                     <h1>Solicite uma Proposta</h1>
                     <p>Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas.</p>
-                    <form method="POST">
+                    <form method="POST" onSubmit={SendMessage}>
                         <div className="input_columns">
                             <div className="input_container">
                                 <label htmlFor="name">Nome Completo *</label>
-                                <input type="text" placeholder="Seu nome completo" id="name" />
+                                <input onChange={(e) => name.current = e.target.value} type="text" placeholder="Seu nome completo" id="name"  required/>
                             </div>
                             <div className="input_container">
                                 <label htmlFor="email">Email *</label>
-                                <input type="email" placeholder="seu@email.com" id="email" />
+                                <input onChange={(e) => email.current = e.target.value} type="email" placeholder="seu@email.com" id="email"  required/>
                             </div>
                         </div>
                         <div className="input_columns">
                             <div className="input_container">
                                 <label htmlFor="company">Empresa *</label>
-                                <input type="text" placeholder="Nome da sua empresa" id="company" />
+                                <input onChange={(e) => company.current = e.target.value} type="text" placeholder="Nome da sua empresa" id="company"  required/>
                             </div>
                             <div className="input_container">
                                 <label htmlFor="service">Serviço desejado *</label>
-                                <input type="text" placeholder="Tipo de serviço desejado" id="service" />
+                                <select id="service" value={topic} onChange={(e)=> {
+                                    setTopic(e.target.value);
+                                    topicRef.current = e.target.value;
+                                }} required>
+                                    {
+                                        services.map((elem, index) => {
+                                            return(
+                                                <option key={index} value={elem.title}>{elem.title}</option>
+                                            );
+                                        })
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div className="input_container">
                             <label htmlFor="message">Mensagem *</label>
-                            <textarea id="message" placeholder="Conte-nos sobre o seu projeto e como podemos ajudar..."></textarea>
+                            <textarea onChange={(e) => message.current = e.target.value} id="message" placeholder="Conte-nos sobre o seu projeto e como podemos ajudar..." required></textarea>
                         </div>
-                        <button className="form-button" type="button">Enviar Mensagem <FiSend/></button>
+                        <div className="input_container">
+                            <label htmlFor="send_option">Enviar por:</label>
+                            <select name="send_option" defaultValue="null" id="send_option" onChange={(e) => ChangeMethod(e.target.value)} required>
+                                <option value="null" disabled unselectable>Escolha o método de envio</option>
+                                <option value="email">Email</option>
+                                <option value="whatsapp">WhatsApp</option>
+                            </select>
+                        </div>
+                        <button className="form-button" type="submit">Enviar Mensagem <FiSend/></button>
                     </form>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { HiMiniArrowTrendingUp } from "react-icons/hi2";
 import { FiUsers } from "react-icons/fi";
 
-const ServiceCard = ({service, index}) =>
+const ServiceCard = ({service, index, onClick}) =>
 {
     const MapIcon = {
         0: <HiMiniArrowTrendingUp className="icon"/>,
@@ -21,19 +21,11 @@ const ServiceCard = ({service, index}) =>
             <div className="service-icon">
                 { MapIcon[service.icon] }
             </div>
-            <p>{service.title}</p>
-            <span>{service.description}</span>
-            <ul>
-                {
-                    service.features.map((feature, index) => {
-                        return(
-                            <li key={index}>{feature}</li>
-                        )
-                    })
-                }
-            </ul>
-            <div className="service-button">
-                <button>Solicite Proposta <FaArrowRight className="icon"/></button>
+            <div className="service-info">
+                <p>{service.title}</p>
+                <div className="service-button">
+                    <button onClick={() => onClick(service)}>Solicite Proposta <FaArrowRight className="icon"/></button>
+                </div>
             </div>
         </div>
     )

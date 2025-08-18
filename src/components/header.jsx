@@ -2,6 +2,7 @@ import { FaEnvelope, FaFacebook, FaPhoneAlt } from "react-icons/fa";
 import "../css/header.css";
 import { AiFillInstagram } from "react-icons/ai";
 import { useEffect } from "react";
+import { IoLogoLinkedin } from "react-icons/io";
 
 const Header = () => {
 
@@ -38,6 +39,7 @@ const Header = () => {
                 <div className="socials">
                     <FaFacebook className="icon"/>
                     <AiFillInstagram className="icon"/>
+                    <IoLogoLinkedin className="icon"/>
                 </div>
             </div>
             <div id="header" className="header">

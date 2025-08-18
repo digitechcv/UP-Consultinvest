@@ -37,6 +37,10 @@
     height: 20px;
 }
 
+.contact-header .socials .icon:hover {
+    cursor: pointer;
+}
+
 .header {
     background-color: var(--header-color);
     display: flex;

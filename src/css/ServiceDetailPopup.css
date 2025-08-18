@@ -1,0 +1,137 @@
+.ServiceDetail {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000000;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.ServiceDetail .Card {
+    position: relative;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 7px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ServiceDetail .Card .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 10px;
+    background: var(--light-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: .3s ease;
+}
+
+.ServiceDetail .Card .close-btn .icon {
+    width: 100%;
+    height: 100%;
+    color: var(--secondary-color);
+    transition: .3s ease;
+}
+
+.ServiceDetail .Card .close-btn:hover {
+    background: var(--secondary-color);
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.ServiceDetail .Card .close-btn:hover .icon {
+    transform: rotate(180deg);
+    color: white;
+    transition: .3s ease;
+}
+
+.ServiceDetail .Card .row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ServiceDetail .Card .icon-container {
+    width: 45px;
+    height: 45px;
+    padding: 15px;
+    border-radius: 10px;
+    background: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ServiceDetail .Card .icon-container .icon {
+    width: 100%;
+    height: 100%;
+    color: var(--primary-color);
+}
+
+.ServiceDetail .Card .info-container h1{
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--secondary-color);
+    font-size: var(--normal-title);
+    color: var(--secondary-color);
+}
+
+.ServiceDetail .Card .info-container p {
+    font-size: var(--text);
+    color: var(--text-color);
+}
+
+.ServiceDetail .Card .info-container ul {
+    padding: 10px;
+}
+
+.ServiceDetail .Card .info-container ul li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ServiceDetail .service-button{
+    width: 100%;
+    margin-top: 10px;
+    height: 100%;
+    display: flex;
+    align-items: end;
+}
+
+.ServiceDetail .service-button button {
+    outline-style: none;
+    padding: 10px 15px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 5px;
+    width: 100%;
+    justify-content: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.ServiceDetail .service-button button .icon {
+    transition: .3s ease;
+}
+
+.ServiceDetail .service-button button:hover .icon {
+    transform: translateX(10px);
+    transition: .3s ease;
+}
