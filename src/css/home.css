@@ -6,6 +6,8 @@
 
 .hero-section .heroBg {
     position: absolute;
+    background: url(../images/hero-consulting-KkA-Ji33.jpg) center no-repeat;
+    background-size: cover;
     width: 100%;
     top: 0;
     bottom: 0;
@@ -17,7 +19,6 @@
 .hero-section .container {
     position: absolute;
     background: linear-gradient(90deg, var(--secondary-color-80) 10%, var(--primary-color-80) 100%);
-    width: 100%;
     top: 0;
     bottom: 0;
     right: 0;
@@ -98,11 +99,21 @@
 
 .hero-section .container .hero-section-options .service-button p{
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: var(--small-text);
     z-index: 10;
     transition: 0.3 ease 0.15s;
 }
 
+.hero-section .container .hero-section-options .service-button .icon {
+    transition: 0.3s ease;
+}
+
+.hero-section .container .hero-section-options .service-button:hover {
+    box-shadow: 0 0 7px 4px var(--primary-color-80);
+}
 
 .hero-section .container .hero-section-options .service-button .animated_bg {
     position: absolute;
@@ -126,6 +137,11 @@
 
 .hero-section .container .hero-section-options .service-button:hover p {
     color: var(--primary-color);
+    transition: 0.3s ease;
+}
+
+.hero-section .container .hero-section-options .service-button:hover .icon {
+    transform: translateX(10px);
     transition: 0.3s ease;
 }
 
@@ -201,7 +217,7 @@
 .info-container {
     width: 100%;
     display: flex;
-    gap: 10px;
+    gap: 30px;
 }
 
 .info-container .about-us-column {
@@ -226,7 +242,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .info-container .company-values .company-values-card {
@@ -263,7 +279,7 @@
 .contact-container {
     width: 100%;
     display: flex;
-    gap: 40px;
+    gap: 80px;
     margin-top: 20px;
 }
 
@@ -280,7 +296,7 @@
     align-items: center;
 }
 
-.icon_container{
+.icon_container {
     width: 18px;
     height: 18px;
     border-radius: 20px;
@@ -321,6 +337,10 @@
     height: 100%;
     color: var(--primary-color);
 }
+
+.social-container .icon_container {
+    margin-top: 20px;
+} 
 
 .contact-container .contact-form {
     width: 70%;
@@ -407,4 +427,120 @@
     outline: none;
     border: none;
     font-size: var(--text);
+}
+
+@media only screen and (max-width: 1300px) {
+    .hero-section .container {
+        padding: 20px 150px;
+    }
+    
+    .hero-section .container .info {
+        width: 100%;
+    }
+
+    .hero-section .container .info h1 {
+        font-size: var(--normal-title);
+        font-weight: 700;
+        line-height: 1.3em;
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .hero-section .container {
+        padding: 20px 50px;
+    }
+    
+    .hero-section .container .info {
+        width: 100%;
+    }
+
+    .hero-section .container .info h1 {
+        font-size: var(--normal-title);
+        font-weight: 700;
+        line-height: 1.3em;
+        width: 85%;
+    }
+
+    .hero-section .container .info p {
+        width: 85%;
+    }
+
+    .section {
+        padding: 50px;
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .service-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-container {
+        flex-direction: column-reverse;
+        margin-top: 20px;
+    }
+
+    .contact-container .company-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact-container .contact-form {
+        width: 90%;
+        background: white;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+
+    .info-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .info-container .about-us-column {
+        width: 100%;
+    }
+
+    .info-container .second-column {
+        width: 100%;
+        flex-direction: column-reverse;
+        margin-top: 0;
+        gap: 50px;
+    }
+
+    .info-container .second-column .company-values {
+        margin-top: 10px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .hero-section .container .hero-section-options {
+        gap: 0;
+        margin: 20px 0;
+    }
+
+    .hero-section .container .hero-section-options .service-button {
+        width: 210px;
+    }
+
+    .service-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-container .contact-form form .input_columns {
+        flex-direction: column;
+    }
 }

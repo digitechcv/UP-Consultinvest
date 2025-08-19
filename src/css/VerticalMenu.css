@@ -1,0 +1,67 @@
+.VerticalMenu{
+    z-index: 10000;
+}
+
+.VerticalMenu .bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.VerticalMenu .container {
+    position: fixed;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    top: 0;
+    bottom: 0;
+    left: -1000px;
+    box-shadow: 0 0 7px 4px rgba(0, 0, 0, 0.2);
+    transition: left .3s ease;
+}
+
+.VerticalMenu .show {
+    left: 0;
+}
+
+.VerticalMenu .header-container {
+    width: 10px;
+    padding: 20px;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.VerticalMenu .header-container .icon {
+    width: 20px;
+    height: 20px;
+    transition: .3s ease;
+}
+
+.VerticalMenu .header-container .icon:hover {
+    transform: rotate(180deg);
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.VerticalMenu .menu {
+    margin-top: 20px;
+}
+
+.VerticalMenu .menu li {
+    padding: 10px 20px;  
+    transition: .3s ease;
+}
+
+.VerticalMenu .menu li:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transition: .3s ease;
+}
+
+.VerticalMenu .menu button {
+    width: 85%;
+    margin: 20px;
+}

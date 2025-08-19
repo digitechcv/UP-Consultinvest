@@ -1,9 +1,7 @@
 import "../css/general.css";
 import "../css/home.css";
 import { Header, ServiceCard, InfoCard, Footer, ServicePopup } from "../components";
-import heroBg from "../images/hero-consulting-KkA-Ji33.jpg";
 import { FaArrowRight, FaFacebook } from "react-icons/fa";
-import { HiMiniArrowTrendingUp } from "react-icons/hi2";
 import { services, CompanyValues, OrganizationalIdentity } from "../data/dummy";
 import { IoLogoLinkedin, IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
@@ -94,16 +92,15 @@ const Home = () => {
           <Header/>
           <ServicePopup isOpen={dialogOpen} onClose={() => setDialogOpen(false)} onSelect={selectService} service={service}/>
           <section id="home" className="hero-section">
-            <img className="heroBg" src={heroBg}/>
+            <div className="heroBg"></div>
             <div className="container">
                 <div className="info">
                     <h1>Transformamos negócios com estratégia, criatividade e inovação.</h1>
                     <p>Consultoria, marketing, comunicação e finanças para empresas que querem crescer com solidez.</p>
                     <div className="hero-section-options">
-                        <button className="start-button">Marcar Reunião <FaArrowRight className="icon"/> </button>
-                        <button className="service-button">
+                        <button className="service-button" onClick={() => scrollToId("contact")}>
                             <div className="animated_bg"></div>
-                            <p>Solicitar Proposta</p>
+                            <p>Marcar Reunião <FaArrowRight className="icon"/></p>
                         </button>
                     </div>
                 </div>
@@ -145,17 +142,21 @@ const Home = () => {
                     <div className="company-values">
                         {
                             CompanyValues.map((values, index) => {
-                                return (
-                                    <div key={index} className="company-values-card">
-                                        <div className="icon-container"><IoMdCheckmarkCircleOutline className="icon"/></div>
-                                        <p style={{color: "var(--secondary-color)"}}><strong>{values.title}</strong> - {values.description}</p>
-                                    </div>
-                                );
+                                if(index < 3)
+                                {
+                                    return (
+                                        <div key={index} className="company-values-card">
+                                            <div className="icon-container"><IoMdCheckmarkCircleOutline className="icon"/></div>
+                                            <p style={{color: "var(--secondary-color)"}}><strong>{values.title}</strong> - {values.description}</p>
+                                        </div>
+                                    );
+                                }
+                                else return (<></>)
                             })
                         }
                     </div>
                 </div>
-                <div className="about-us-column">
+                <div className="about-us-column second-column">
                     {
                         OrganizationalIdentity.map((elem, index) => {
                             return (
@@ -163,6 +164,22 @@ const Home = () => {
                             );
                         })
                     }
+
+                    <div className="company-values">
+                        {
+                            CompanyValues.map((values, index) => {
+                                if(index >= 3){
+                                    return (
+                                        <div key={index} className="company-values-card">
+                                            <div className="icon-container"><IoMdCheckmarkCircleOutline className="icon"/></div>
+                                            <p style={{color: "var(--secondary-color)"}}><strong>{values.title}</strong> - {values.description}</p>
+                                        </div>
+                                    );
+                                }
+                                else return (<></>)
+                            })
+                        }
+                    </div>
                 </div>
             </div>
           </section>

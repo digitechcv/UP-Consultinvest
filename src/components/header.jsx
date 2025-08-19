@@ -1,10 +1,13 @@
-import { FaEnvelope, FaFacebook, FaPhoneAlt } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 import "../css/header.css";
 import { AiFillInstagram } from "react-icons/ai";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { IoLogoLinkedin } from "react-icons/io";
+import { VerticalMenu } from ".";
 
 const Header = () => {
+
+    const [ showVerticalMenu, setShowVerticalMenu ] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -54,10 +57,16 @@ const Header = () => {
 
                     <button className="menu-button">
                         <div className="animated_bg"></div>
-                        <p>Solicitar Consultoria</p>
+                        <p onClick={() => scrollToId("contact")}>Solicitar Consultoria</p>
                     </button>
                 </div>
+                <div className="vertical-menu-button" onClick={()=> setShowVerticalMenu(true)}>
+                    <div className="bar"></div>
+                    <div className="bar middle"></div>
+                    <div className="bar"></div>
+                </div>
             </div>
+            <VerticalMenu showMenu={showVerticalMenu} onClose={() => setShowVerticalMenu(false)}/>
         </section>
     )
 }
