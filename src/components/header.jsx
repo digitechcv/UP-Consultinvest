@@ -4,6 +4,7 @@ import { AiFillInstagram } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { IoLogoLinkedin } from "react-icons/io";
 import { VerticalMenu } from ".";
+import logo from "../images/logo/up consultivest sem fundo.png";
 
 const Header = () => {
 
@@ -46,7 +47,7 @@ const Header = () => {
                 </div>
             </div>
             <div id="header" className="header">
-                <a href="#" className="logo">Up Consultinvest</a>
+                <a href="#" className="logo"><img src={logo} alt="Up Consultinvest"/></a>
                 <div className="menu">
                     <ul>
                         <li className="menu-option" onClick={() => scrollToId("home")}>Home</li>

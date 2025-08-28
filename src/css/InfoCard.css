@@ -36,6 +36,12 @@
     color: var(--secondary-color);
 }
 
+@media only screen and (max-width: 1000px) {
+    .InfoCard {
+        margin-top: 20px;
+    }
+}
+
 @media only screen and (max-width: 900px) {
     .InfoCard {
         flex-direction: column;

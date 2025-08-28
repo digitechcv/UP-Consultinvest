@@ -1,7 +1,7 @@
 import { HiMiniArrowTrendingUp } from "react-icons/hi2";
 import "../css/ServiceDetailPopup.css"
 import { FiUsers } from "react-icons/fi";
-import { MdOutlineSupportAgent } from "react-icons/md";
+import { MdOutlineModelTraining, MdOutlineSupportAgent } from "react-icons/md";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { RiInboxArchiveFill } from "react-icons/ri";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
@@ -15,7 +15,8 @@ const ServicePopup = ({isOpen, service, onClose, onSelect}) => {
         1: <FiUsers className="icon"/>,
         2: <MdOutlineSupportAgent className="icon"/>,
         3: <GiTakeMyMoney className="icon"/>,
-        4: <RiInboxArchiveFill className="icon"/>
+        4: <RiInboxArchiveFill className="icon"/>,
+        5: <MdOutlineModelTraining className="icon"/>
     }
 
     return(

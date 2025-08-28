@@ -7,6 +7,7 @@ import { IoLogoLinkedin, IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
 import { FiSend } from "react-icons/fi";
 import { useRef, useState } from "react";
+import company_image from "../images/concept-victory.jpg";
 
 const Home = () => {
 
@@ -19,6 +20,7 @@ const Home = () => {
     const message = useRef();
     const name = useRef();
     const email = useRef();
+    const role = useRef();
     const company = useRef();
     const topicRef = useRef();
 
@@ -138,7 +140,26 @@ const Home = () => {
                     concretos, crescimento sustentável e posicionamento de destaque no mercado.</p>
                     <p>O nosso compromisso vai além do curto prazo: queremos impulsionar marcas, negócios e
                     ideias para que sejam relevantes, competitivos e preparados para o amanhã.</p>
+                </div>
+                <div className="about-us-column second-column">
+                    <div className="company-image">
+                        <img src={company_image}/>
+                    </div>
+                </div>
+            </div>
+            <div className="info-container-2">
+                <div className="info-container" style={{margin: '30px 0'}}>
+                    {
+                        OrganizationalIdentity.map((elem, index) => {
+                            return (
+                                <InfoCard value={elem} key={index}/>
+                            );
+                        })
+                    }
+                </div>
 
+                <p className="values-section-title">Nossos valores</p>
+                <div className="info-container">
                     <div className="company-values">
                         {
                             CompanyValues.map((values, index) => {
@@ -155,15 +176,6 @@ const Home = () => {
                             })
                         }
                     </div>
-                </div>
-                <div className="about-us-column second-column">
-                    {
-                        OrganizationalIdentity.map((elem, index) => {
-                            return (
-                                <InfoCard value={elem} key={index}/>
-                            );
-                        })
-                    }
 
                     <div className="company-values">
                         {
@@ -181,6 +193,7 @@ const Home = () => {
                         }
                     </div>
                 </div>
+
             </div>
           </section>
 
@@ -238,6 +251,10 @@ const Home = () => {
                             <div className="input_container">
                                 <label htmlFor="company">Empresa *</label>
                                 <input onChange={(e) => company.current = e.target.value} type="text" placeholder="Nome da sua empresa" id="company"  required/>
+                            </div>
+                            <div className="input_container">
+                                <label htmlFor="role">Cargo *</label>
+                                <input onChange={(e) => role.current = e.target.value} type="text" placeholder="Gerente" id="role"  required/>
                             </div>
                             <div className="input_container">
                                 <label htmlFor="service">Serviço desejado *</label>
