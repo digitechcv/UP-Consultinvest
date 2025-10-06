@@ -14,7 +14,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 const Home = () => {
 
     const [ service, setService ] = useState({});
-    const [ topic, setTopic ] = useState("");
+    const [ topic, setTopic ] = useState("Marketing");
     const selectedMethodRef = useRef();
     const [ dialogOpen, setDialogOpen ] = useState(false);
     const [ loading, setLoading ] = useState(false);
@@ -112,6 +112,7 @@ const Home = () => {
             }
             else {
                 showMessage("Selecione um método de envio!", "error", 0);    
+                setLoading(false);
             }
 
         } catch(err) {
