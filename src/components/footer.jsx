@@ -2,6 +2,7 @@ import { MdEmail } from "react-icons/md";
 import "../css/footer.css"
 import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { CompanyInfo } from "../data/dummy";
 
 const Footer = () => {
 
@@ -26,9 +27,8 @@ const Footer = () => {
                     <h1>Up Consultinvest</h1>
                     <p className="sub-title">Transformamos ideias em negócios de sucesso através de consultoria especializada, marketing estratégico e investimentos inteligentes.</p>
                     <div className="contact_container">
-                        <p><MdEmail/> contato@upconsultinvest.com</p>
-                        <p><FaPhoneAlt/> +55 (11) 9999-9999</p>
-                        <p><FaMapMarkerAlt/> São Paulo, SP - Brasil</p>
+                        <p><MdEmail/> {CompanyInfo.email}</p>
+                        <p><FaPhoneAlt/> {CompanyInfo.contact}</p>
                     </div>
                 </div>
                 <div className="links">

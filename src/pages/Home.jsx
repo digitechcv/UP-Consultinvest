@@ -1,13 +1,15 @@
 import "../css/general.css";
 import "../css/home.css";
-import { Header, ServiceCard, InfoCard, Footer, ServicePopup } from "../components";
+import { Header, ServiceCard, InfoCard, Footer, ServicePopup, MessagePopup } from "../components";
 import { FaArrowRight, FaFacebook } from "react-icons/fa";
-import { services, CompanyValues, OrganizationalIdentity } from "../data/dummy";
+import { services, CompanyValues, OrganizationalIdentity, CompanyInfo } from "../data/dummy";
 import { IoLogoLinkedin, IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
 import { FiSend } from "react-icons/fi";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import company_image from "../images/concept-victory.jpg";
+import emailjs from "@emailjs/browser";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Home = () => {
 
@@ -16,6 +18,10 @@ const Home = () => {
     const selectedMethodRef = useRef();
     const [ dialogOpen, setDialogOpen ] = useState(false);
     const [ loading, setLoading ] = useState(false);
+    const [ popupMessage, setPopupMessage ] = useState("");
+    const [ isPopupOpen, setPopupOpen ] = useState(false);
+    const [ popupType, setPopupType ] = useState("");
+    const [ popupTimer, setPopupTimer ] = useState(5000);
 
     const message = useRef();
     const name = useRef();
@@ -23,6 +29,49 @@ const Home = () => {
     const role = useRef();
     const company = useRef();
     const topicRef = useRef();
+
+    const form = useRef();
+
+    useEffect(() => {
+        const elements = document.querySelectorAll(".fade-in-section");
+
+        const observer = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target); // optional: stop observing after fade-in
+            }
+            });
+        },
+        { threshold: 0.1 } // 10% of the element visible triggers fade-in
+        );
+
+        elements.forEach(el => observer.observe(el));
+
+        return () => observer.disconnect();
+    }, []);
+
+    const sendEmail = () => {
+        emailjs
+        .sendForm(
+            process.env.REACT_APP_EMAILJS_SERVICE_KEY,
+            process.env.REACT_APP_EMAILJS_TEMPLATE_KEY,
+            form.current,
+            process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+        )
+        .then(
+            (result) => {
+                showMessage("Mensagem enviada com sucesso!", "success", 0);
+                setLoading(false);
+            },
+            (error) => {
+                console.log(error);
+                showMessage("Ocorreu um erro ao enviar a mensagem.", "error", 0);
+                setLoading(false);
+            }
+        );
+    };
 
     const onServiceDetail = (service) => {
         setService(service);
@@ -42,41 +91,47 @@ const Home = () => {
         scrollToId("contact");
     }
 
-    const number = "";
+    const number = "9807567";
 
     const SendMessage = (e) => {
         e.preventDefault();
 
+        setLoading(true);
+        
         try {
-            setLoading(true);
 
-            if(selectedMethodRef) {
+            if(selectedMethodRef.current) {
                 if(selectedMethodRef.current === "whatsapp") {
                     const link = generateWhatsAppLink(number, generateMessageTemplate());
+                    window.open(link, "_blank");
+                    setLoading(false);
                 }
                 else {
-
+                    sendEmail();
                 }
             }
+            else {
+                showMessage("Selecione um método de envio!", "error", 0);    
+            }
 
-        } catch {
-            
-        }
-        finally {
+        } catch(err) {
+            showMessage("Erro inesperado.", "error", 0);
             setLoading(false);
         }
 
     }
 
     function generateMessageTemplate() {
-        templateMessage += "Assunto: " + topicRef.current;
-        let templateMessage = "\n \n " + message.current;
+        let templateMessage = "Informações de Contato:";
+        templateMessage += "\n Nome: " + name.current;
+        templateMessage += "\n Email: " + email.current;
+        templateMessage += "\n Empresa: " + company.current;
+        templateMessage += "\n Cargo: " + role.current;
 
-        templateMessage += "\n \n Informações de Contato:";
-        templateMessage += "\n \n Nome: " + name.current;
-        templateMessage += "\n \n Email: " + email.current;
-        templateMessage += "\n \n Empresa: " + company.current;
-        return "";
+        templateMessage += "\n \n Assunto: " + topicRef.current;
+        templateMessage += "\n Mensagem: ";
+        templateMessage += "\n " + message.current;
+        return templateMessage;
     }
 
     function generateWhatsAppLink(phoneNumber, message) {
@@ -89,10 +144,17 @@ const Home = () => {
         selectedMethodRef.current = method;
     }
 
+    const showMessage = (message, type, timer) => {
+        setPopupMessage(message);
+        setPopupType(type);
+        setPopupOpen(true);
+    }
+
     return(
         <>
           <Header/>
           <ServicePopup isOpen={dialogOpen} onClose={() => setDialogOpen(false)} onSelect={selectService} service={service}/>
+          <MessagePopup message={popupMessage} type={popupType} timer={popupTimer} confirmButtonText="OK" isOpen={isPopupOpen} closeFunc={() => setPopupOpen(false)}/>
           <section id="home" className="hero-section">
             <div className="heroBg"></div>
             <div className="container">
@@ -109,7 +171,7 @@ const Home = () => {
             </div>
           </section>
 
-          <section id="service" className="our-services section">
+          <section id="service" className="our-services section fade-in-section">
             <h1 className="section-title">O que fazemos?</h1>
             <p className="section-caption">Apoiamos empresas e organizações nas áreas de comunicação, marketing digital, consultoria estratégica, eventos, finanças e aceleração de negócios.</p>
 
@@ -125,10 +187,10 @@ const Home = () => {
           </section>
 
           <section id="about-us" className="about-us section">
-            <div className="about-us-title-container">
+            <div className="about-us-title-container fade-in-section">
                 <span className="about-us-title">Sobre a Up Consultinvest</span>
             </div>
-            <div className="info-container">
+            <div className="info-container fade-in-section">
                 <div className="about-us-column">
                     <h1>Na <strong>Up Consultinvest</strong>, acreditamos que cada negócio tem potencial para alcançar novos patamares.</h1>
                     <p>Somos uma empresa de consultoria, marketing e inovação que apoia organizações em
@@ -147,7 +209,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="info-container-2">
+            <div className="info-container-2 fade-in-section">
                 <div className="info-container" style={{margin: '30px 0'}}>
                     {
                         OrganizationalIdentity.map((elem, index) => {
@@ -166,7 +228,7 @@ const Home = () => {
                                 if(index < 3)
                                 {
                                     return (
-                                        <div key={index} className="company-values-card">
+                                        <div key={index} className="company-values-card fade-in-section">
                                             <div className="icon-container"><IoMdCheckmarkCircleOutline className="icon"/></div>
                                             <p style={{color: "var(--secondary-color)"}}><strong>{values.title}</strong> - {values.description}</p>
                                         </div>
@@ -182,7 +244,7 @@ const Home = () => {
                             CompanyValues.map((values, index) => {
                                 if(index >= 3){
                                     return (
-                                        <div key={index} className="company-values-card">
+                                        <div key={index} className="company-values-card fade-in-section">
                                             <div className="icon-container"><IoMdCheckmarkCircleOutline className="icon"/></div>
                                             <p style={{color: "var(--secondary-color)"}}><strong>{values.title}</strong> - {values.description}</p>
                                         </div>
@@ -197,7 +259,7 @@ const Home = () => {
             </div>
           </section>
 
-          <section id="contact" className="contact-us section">
+          <section id="contact" className="contact-us section fade-in-section">
             <h1 className="section-title">Queremos ouvir o que sua empresa precisa.</h1>
             <p className="section-caption">Estamos disponíveis para uma conversa estratégica.</p>
 
@@ -205,29 +267,24 @@ const Home = () => {
                 <div className="company-info">
                     <InfoCard value={{
                         title: "Email",
-                        description: "contato@upconsultinvest.com",
+                        description: CompanyInfo.email || "contato@upconsultinvest.com",
                         icon: 2,
                     }}/>
                     <InfoCard value={{
                         title: "Telefone",
-                        description: "+55 (11) 9999-9999",
+                        description: CompanyInfo.contact,
                         icon: 3,
                     }}/>
-                    <InfoCard value={{
-                        title: "Localização",
-                        description: "São Paulo, SP - Brasil",
-                        icon: 4,
-                    }}/>
                     <div className="social-container">
-                        <div className="icon_container">
+                        <div className="icon_container" onClick={() => window.open(CompanyInfo.facebookLink, "_blank")}>
                             <FaFacebook className="icon"/>
                             <div className="selector"></div>
                         </div>
-                        <div className="icon_container">
+                        <div className="icon_container" onClick={() => window.open(CompanyInfo.instagramLink, "_blank")}>
                             <RiInstagramFill className="icon"/>
                             <div className="selector"></div>
                         </div>
-                        <div className="icon_container">
+                        <div className="icon_container" onClick={() => window.open(CompanyInfo.linkedInLink, "_blank")}>
                             <IoLogoLinkedin className="icon"/>
                             <div className="selector"></div>
                         </div>
@@ -236,29 +293,29 @@ const Home = () => {
                 <div className="contact-form">
                     <h1>Solicite uma Proposta</h1>
                     <p>Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas.</p>
-                    <form method="POST" onSubmit={SendMessage}>
+                    <form ref={form} method="POST" onSubmit={SendMessage}>
                         <div className="input_columns">
                             <div className="input_container">
                                 <label htmlFor="name">Nome Completo *</label>
-                                <input onChange={(e) => name.current = e.target.value} type="text" placeholder="Seu nome completo" id="name"  required/>
+                                <input onChange={(e) => name.current = e.target.value} type="text" placeholder="Seu nome completo" id="name" name="name" required/>
                             </div>
                             <div className="input_container">
                                 <label htmlFor="email">Email *</label>
-                                <input onChange={(e) => email.current = e.target.value} type="email" placeholder="seu@email.com" id="email"  required/>
+                                <input onChange={(e) => email.current = e.target.value} type="email" placeholder="seu@email.com" id="email" name="email"  required/>
                             </div>
                         </div>
                         <div className="input_columns">
                             <div className="input_container">
                                 <label htmlFor="company">Empresa *</label>
-                                <input onChange={(e) => company.current = e.target.value} type="text" placeholder="Nome da sua empresa" id="company"  required/>
+                                <input onChange={(e) => company.current = e.target.value} type="text" placeholder="Nome da sua empresa" name="company" id="company"  required/>
                             </div>
                             <div className="input_container">
                                 <label htmlFor="role">Cargo *</label>
-                                <input onChange={(e) => role.current = e.target.value} type="text" placeholder="Gerente" id="role"  required/>
+                                <input onChange={(e) => role.current = e.target.value} type="text" placeholder="Gerente" name="role" id="role"  required/>
                             </div>
                             <div className="input_container">
                                 <label htmlFor="service">Serviço desejado *</label>
-                                <select id="service" value={topic} onChange={(e)=> {
+                                <select name="service" id="service" value={topic} onChange={(e)=> {
                                     setTopic(e.target.value);
                                     topicRef.current = e.target.value;
                                 }} required>
@@ -274,7 +331,7 @@ const Home = () => {
                         </div>
                         <div className="input_container">
                             <label htmlFor="message">Mensagem *</label>
-                            <textarea onChange={(e) => message.current = e.target.value} id="message" placeholder="Conte-nos sobre o seu projeto e como podemos ajudar..." required></textarea>
+                            <textarea onChange={(e) => message.current = e.target.value} id="message" name="message" placeholder="Conte-nos sobre o seu projeto e como podemos ajudar..." required></textarea>
                         </div>
                         <div className="input_container">
                             <label htmlFor="send_option">Enviar por:</label>
@@ -284,7 +341,20 @@ const Home = () => {
                                 <option value="whatsapp">WhatsApp</option>
                             </select>
                         </div>
-                        <button className="form-button" type="submit">Enviar Mensagem <FiSend/></button>
+                        <button style={{cursor: 'pointer'}} className="form-button" type="submit">
+                            {
+                                !loading
+                                ?
+                                <>
+                                    Enviar Mensagem <FiSend/>
+                                </>
+                                :
+                                <>
+                                    <AiOutlineLoading3Quarters className="icon loading"/>
+                                </>
+                            
+                            }
+                        </button>
                     </form>
                 </div>
             </div>

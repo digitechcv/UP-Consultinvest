@@ -15,7 +15,7 @@ const InfoCard = ({value}) => {
     }
 
     return (
-        <div className="InfoCard">
+        <div className="InfoCard fade-in-section">
             <div className="icon_container">
                 {MapIcon[value.icon]}
             </div>

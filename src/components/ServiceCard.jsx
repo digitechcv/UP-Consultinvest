@@ -18,7 +18,7 @@ const ServiceCard = ({service, index, onClick}) =>
     }
 
     return(
-        <div className="ServiceCard">
+        <div className="ServiceCard fade-in-section">
             <div className="service-icon">
                 { MapIcon[service.icon] }
             </div>

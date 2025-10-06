@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { IoLogoLinkedin } from "react-icons/io";
 import { VerticalMenu } from ".";
 import logo from "../images/logo/up consultivest sem fundo.png";
+import { CompanyInfo } from "../data/dummy";
 
 const Header = () => {
 
@@ -41,9 +42,9 @@ const Header = () => {
                     <p>Consulting & Investment</p>
                 </div>
                 <div className="socials">
-                    <FaFacebook className="icon"/>
-                    <AiFillInstagram className="icon"/>
-                    <IoLogoLinkedin className="icon"/>
+                    <FaFacebook className="icon" onClick={() => window.open(CompanyInfo.facebookLink, "_blank")}/>
+                    <AiFillInstagram className="icon" onClick={() => window.open(CompanyInfo.instagramLink, "_blank")}/>
+                    <IoLogoLinkedin className="icon" onClick={() => window.open(CompanyInfo.linkedInLink, "_blank")}/>
                 </div>
             </div>
             <div id="header" className="header">

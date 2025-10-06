@@ -4,3 +4,4 @@ export { default as ServiceCard } from "./ServiceCard";
 export { default as InfoCard } from "./InfoCard";
 export { default as ServicePopup } from "./ServicePopup";
 export { default as VerticalMenu } from "./VerticalMenu";
+export { default as MessagePopup } from "./MessagePopup";

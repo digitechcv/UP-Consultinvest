@@ -1,8 +1,9 @@
 :root {
-    --primary-color: rgb(223, 223, 17);
-    --primary-color-80: rgba(223, 223, 107, 0.65);
-    --primary-color-50: rgba(223, 223, 17, 0.5);
-    --primary-color-20: rgba(223, 223, 17, 0.3);
+    --primary-color: rgb(235, 220, 10);
+    --primary-color-80: rgba(235, 220, 107, 0.448);
+    --primary-color-75: rgba(235, 220, 10, 0.95);
+    --primary-color-50: rgba(235, 220, 17, 0.5);
+    --primary-color-20: rgba(235, 220, 17, 0.3);
     --secondary-color: rgb(37, 37, 37);
     --secondary-color-80: rgba(0, 0, 0, 0.8);
     --header-color: rgb(37, 37, 37);
@@ -26,3 +27,28 @@ a {
     text-decoration: none;
 }
 
+.loading{
+    animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+    from{
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+
+/* Initial state: hidden and slightly shifted */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+/* Active state: fully visible and in place */
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

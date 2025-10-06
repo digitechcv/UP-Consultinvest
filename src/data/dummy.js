@@ -136,3 +136,16 @@ export const OrganizationalIdentity = [
         description: "Ser reconhecida como a parceira estratégica de referência em consultoria, marketing e inovação em Cabo Verde e nos mercados internacionais, destacando-nos pela capacidade de gerar resultados, criar valor e antecipar tendências que impulsionam o sucesso dos nossos clientes.",
     }
 ]
+
+export const FacebookLink = "https://www.facebook.com/share/1HFCYiL5UD/";
+export const InstagramLink = "https://www.instagram.com/upconsultinvest.cv?igsh=MXFhdDZzbDk1NXB1bQ==";
+export const LinkedInLink = "";
+
+export const CompanyInfo = {
+    facebookLink: FacebookLink,
+    instagramLink: InstagramLink,
+    linkedInLink: LinkedInLink,
+    contact: "+238 980 75 67",
+    email: "upconsultinvestcv@gmail.com",
+    location: ""
+}

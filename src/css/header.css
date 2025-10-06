@@ -1,9 +1,11 @@
 .header-container {
     display: flex;
     flex-direction: column;
+    z-index: 1000;
 }
 
 .contact-header {
+    z-index: 10;
     padding: 10px 150px;
     background: var(--primary-color);
     color: var(--secondary-color);
@@ -42,12 +44,16 @@
 }
 
 .header {
-    background-color: var(--header-color);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 150px;
-    transition: 0.3s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .header .logo {
@@ -144,11 +150,13 @@
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(63, 63, 63, 0.5);
+    background: rgba(63, 63, 63, 0.6);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 10000;
     box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transform: translateY(0); /* slide down into place */
     transition: 0.3s ease;
 }
 
