@@ -28,7 +28,7 @@ const Home = () => {
     const email = useRef();
     const role = useRef();
     const company = useRef();
-    const topicRef = useRef();
+    const topicRef = useRef("Marketing");
 
     const form = useRef();
 
