@@ -53,11 +53,10 @@ const Footer = () => {
             </div>
             <div className="bottom_container">
                 <div className="copyright_container">
-                    <p>© {year} Up Consultinvest. Todos os direitos reservados.</p>
+                    <p>© {year} <strong><a href="#">Up Consultinvest</a></strong>. Todos os direitos reservados.</p>
                 </div>
-                <div className="terms_container">
-                    <a href="#">Política de Privacidade</a>
-                    <a href="#">Termos de Uso</a>
+                <div className="digitech">
+                    Desgined by <a href="#" id="digitech">Digitech</a>
                 </div>
             </div>
         </div>

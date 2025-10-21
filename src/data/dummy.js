@@ -139,13 +139,13 @@ export const OrganizationalIdentity = [
 
 export const FacebookLink = "https://www.facebook.com/share/1HFCYiL5UD/";
 export const InstagramLink = "https://www.instagram.com/upconsultinvest.cv?igsh=MXFhdDZzbDk1NXB1bQ==";
-export const LinkedInLink = "";
+export const LinkedInLink = "https://www.linkedin.com/company/up-consultinvest/";
 
 export const CompanyInfo = {
     facebookLink: FacebookLink,
     instagramLink: InstagramLink,
     linkedInLink: LinkedInLink,
     contact: "+238 980 75 67",
-    email: "upconsultinvestcv@gmail.com",
+    email: "geral@upconsultinvest.com",
     location: ""
 }
